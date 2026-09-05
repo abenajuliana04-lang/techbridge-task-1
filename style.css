@@ -165,8 +165,6 @@ a { color: inherit; }
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-img { max-width: 200%; height: auto; display: block; }
-
 /* ---------- Hero ---------- */
 .hero { padding: 72px 0 64px; overflow: hidden; }
 .hero-inner {
@@ -394,4 +392,194 @@ img { max-width: 200%; height: auto; display: block; }
   .footer-inner { grid-template-columns: 1fr; }
   .section { padding: 56px 0; }
   .hero { padding: 48px 0 40px; }
+}
+
+/* ============================================================
+   Homepage teaser links (index.html Programs section)
+   ============================================================ */
+
+.inline-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+  white-space: nowrap;
+}
+.inline-link:hover { color: var(--green-deep); }
+
+.program-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.card-link {
+  margin-top: auto;
+  padding-top: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--navy);
+  text-decoration: none;
+}
+.card-link:hover { color: var(--green-deep); }
+
+/* ============================================================
+   Programs page (programs.html)
+   Reuses the same tokens/components as index.html and adds the
+   pieces specific to presenting two program tracks in depth.
+   ============================================================ */
+
+.current-page {
+  color: var(--green-deep) !important;
+}
+
+/* --- Programs hero --- */
+.programs-hero { padding: 64px 0 12px; }
+.programs-hero .eyebrow { margin-bottom: 10px; }
+.programs-hero h1 { max-width: 18ch; }
+.programs-hero .hero-lede { max-width: 60ch; }
+.programs-hero .hero-actions { margin-top: 22px; }
+
+/* --- "What you'll know" checklist, reuses dt/dd rhythm --- */
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 40px;
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+}
+.answer-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  font-size: 1rem;
+}
+.answer-grid svg { flex: none; margin-top: 4px; }
+
+/* --- Detailed program cards --- */
+.program-grid--detailed {
+  grid-template-columns: repeat(2, 1fr);
+  align-items: stretch;
+}
+.program-card--detailed {
+  padding: 36px;
+  gap: 0;
+}
+.program-card--detailed .program-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(63, 203, 85, 0.12);
+  margin-bottom: 18px;
+}
+.program-card--detailed .program-focus {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--green-deep);
+  margin-bottom: 14px;
+}
+.program-card--detailed .program-desc {
+  margin-bottom: 0;
+}
+.skill-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  margin: 24px 0 12px;
+  padding-top: 20px;
+}
+.skill-tags {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-tags li {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--navy);
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+.program-card--detailed .btn {
+  margin-top: auto;
+  align-self: stretch;
+  justify-content: center;
+}
+
+/* --- Differentiation / compare strip --- */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.compare-side {
+  background: #fff;
+  padding: 34px 32px;
+}
+.compare-side + .compare-side {
+  border-left: 1px solid var(--line);
+  background: var(--mist);
+}
+.compare-kicker {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+}
+.compare-side h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.compare-side p { margin-bottom: 0; color: var(--ink-soft); }
+
+/* --- Final CTA band on programs.html --- */
+.final-cta .apply-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  text-align: left;
+  max-width: none;
+}
+.final-cta .apply-inner p { margin: 6px 0 0; }
+.final-cta .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.final-cta .btn-outline-invert {
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: #fff;
+  background: transparent;
+}
+.final-cta .btn-outline-invert:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+@media (max-width: 860px) {
+  .program-grid--detailed { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-side + .compare-side { border-left: none; border-top: 1px solid var(--line); }
+}
+
+@media (max-width: 620px) {
+  .answer-grid { grid-template-columns: 1fr; }
+  .final-cta .apply-inner { flex-direction: column; align-items: flex-start; }
 }
