@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Internship Roadmap — TechBridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0c1f;
+    --grid-line: rgba(255,255,255,0.035);
+    --surface: #1a1b3a;
+    --surface-border: #2c2d59;
+    --text: #f2f2f9;
+    --text-muted: #9698c2;
+    --web: #34d399;
+    --web-soft: rgba(52,211,153,0.12);
+    --data: #5b8cff;
+    --data-soft: rgba(91,140,255,0.12);
+    --accent: var(--web);
+    --accent-soft: var(--web-soft);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{ font-family:'Sora', sans-serif; margin:0; }
+
+  a{ color:inherit; }
+
+  /* ---------- NAV ---------- */
+  .site-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 6%;
+    background:#f6f5f2;
+    color:#14142b;
+  }
+  .logo{
+    font-family:'Sora', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+  }
+  .logo span{ color: var(--web); }
+  .nav-links{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    font-size:0.95rem;
+    font-weight:500;
+  }
+  .nav-links a{ text-decoration:none; color:#14142b; }
+  .nav-links a.current{ color: var(--web); }
+  .nav-cta{
+    background:#14142b;
+    color:#fff !important;
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:600;
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+
+  /* ---------- HERO / INTRO ---------- */
+  .wrap{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px 100px;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .intro{ margin-bottom: 40px; }
+  .intro .kicker{
+    color: var(--text-muted);
+    font-size:0.95rem;
+    margin-bottom:10px;
+  }
+  .intro h1{
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height:1.15;
+    font-weight:700;
+    max-width: 20ch;
+  }
+  .intro p{
+    color: var(--text-muted);
+    font-size:1.02rem;
+    line-height:1.6;
+    max-width: 60ch;
+    margin-top:16px;
+  }
+
+  /* ---------- TRACK SWITCH ---------- */
+  .track-switch{
+    display:inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 14px;
+    padding: 5px;
+    margin: 32px 0 8px;
+  }
+  .track-btn{
+    border:none;
+    background:transparent;
+    color: var(--text-muted);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor:pointer;
+    transition: background .2s ease, color .2s ease;
+  }
+  .track-btn:hover{ color: var(--text); }
+  .track-btn.active{
+    background: var(--accent);
+    color: #0b0c1f;
+  }
+
+  .viewing-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin: 20px 0 48px;
+    color: var(--text-muted);
+    font-size:0.92rem;
+  }
+  .viewing-row .badge{
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight:600;
+    font-size:0.85rem;
+  }
+  .viewing-row .dot-sep{
+    width:4px; height:4px; border-radius:50%;
+    background: var(--surface-border);
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    position:relative;
+    padding-left: 28px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--surface-border);
+  }
+
+  .task-card{
+    position:relative;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+    animation: rise .35s ease both;
+  }
+  .task-card::before{
+    content:"";
+    position:absolute;
+    left: -28px;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(8px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .task-meta{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+  }
+  .day-pill{
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight:700;
+    font-size:0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .task-number{
+    color: var(--text-muted);
+    font-size:0.85rem;
+    font-weight:500;
+  }
+  .task-card h3{
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .task-card p{
+    color: var(--text-muted);
+    font-size:0.95rem;
+    line-height:1.55;
+    margin:0 0 16px;
+  }
+  .difficulty{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:600;
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--surface-border);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  /* ---------- FOOTER NOTE ---------- */
+  .foot-note{
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--surface-border);
+    color: var(--text-muted);
+    font-size:0.88rem;
+    line-height:1.6;
+  }
+
+  @media (max-width: 600px){
+    .site-nav{ flex-direction:column; gap:14px; padding:16px 6%; }
+    .nav-links{ flex-wrap:wrap; justify-content:center; gap:16px 20px; }
+    .track-switch{ display:flex; width:100%; }
+    .track-btn{ flex:1; }
+    .wrap{ padding: 40px 18px 70px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="logo">TECH<span>BRIDGE</span></div>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="internship.html">Internship Tasks</a>
+    <a href="roadmap.html" class="current">Roadmap</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://forms.gle/8EbdSy5ttGfLZfjv5" class="nav-cta" target="_blank" rel="noopener">Apply now</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="intro">
+    <div class="kicker">30-day practical internship</div>
+    <h1>Two tracks. One internship. Pick the path you want to build.</h1>
+    <p>TechBridge interns progress through 8 hands-on tasks over 30 days, moving from beginner fundamentals to a final capstone build. Choose a track below to see exactly what you'll be doing, and when.</p>
+  </div>
+
+  <div class="track-switch" role="tablist" aria-label="Choose internship track">
+    <button class="track-btn active" id="btn-web" role="tab" aria-selected="true">Web Development</button>
+    <button class="track-btn" id="btn-data" role="tab" aria-selected="false">Data Analytics</button>
+  </div>
+
+  <div class="viewing-row">
+    <span>Currently viewing</span>
+    <span class="badge" id="viewing-badge">Web Development</span>
+    <span class="dot-sep"></span>
+    <span id="track-summary">Day 1 → Day 26 · Beginner to Intermediate</span>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="foot-note">
+    Every task builds on the one before it. By Day 26, whichever track you choose ends in a capstone that combines everything from the previous seven tasks into a single project.
+  </div>
+
+</div>
+
+<script>
+  // ---- Data: each task is an object, grouped into two arrays (one per track) ----
+  const tracks = {
+    web: {
+      label: "Web Development",
+      accentVar: "--web",
+      accentSoftVar: "--web-soft",
+      tasks: [
+        { number: 1, title: "Build the TechBridge Homepage", day: 1, description: "Create the first version of the TechBridge website using HTML and CSS.", difficulty: "Beginner" },
+        { number: 2, title: "Build the TechBridge Programs Experience", day: 4, description: "Create a Programs experience presenting TechBridge's available learning programs.", difficulty: "Beginner" },
+        { number: 3, title: "Build the Internship Tasks Experience", day: 8, description: "Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.", difficulty: "Beginner → Intermediate" },
+        { number: 4, title: "Build an Interactive Internship Roadmap", day: 11, description: "Use JavaScript to allow visitors to switch between the Data Analytics and Web Development internship tracks.", difficulty: "Beginner → Intermediate" },
+        { number: 5, title: "Build the Intern Registration Experience", day: 15, description: "Create a professional registration and onboarding interface for TechBridge interns.", difficulty: "Intermediate" },
+        { number: 6, title: "Build the Task Submission System", day: 19, description: "Create an interface through which interns can prepare and submit their task work.", difficulty: "Intermediate" },
+        { number: 7, title: "Build the Intern Dashboard", day: 22, description: "Create a dashboard where an intern can view their profile, progress, tasks and submissions.", difficulty: "Intermediate" },
+        { number: 8, title: "Build the Complete TechBridge Internship Platform", day: 26, description: "Combine the different components created during the internship into a complete TechBridge platform.", difficulty: "Intermediate" }
+      ]
+    },
+    data: {
+      label: "Data Analytics",
+      accentVar: "--data",
+      accentSoftVar: "--data-soft",
+      tasks: [
+        { number: 1, title: "Data Cleaning Basics", day: 1, description: "Clean a messy dataset using Google Sheets or Excel. Identify and fix duplicate rows, blank cells, inconsistent formatting, and incorrect data types.", difficulty: "Beginner" },
+        { number: 2, title: "Formulas & Pivot Tables", day: 4, description: "Use spreadsheet formulas and Pivot Tables to answer questions and extract useful insights from a dataset.", difficulty: "Beginner" },
+        { number: 3, title: "Data Visualization", day: 8, description: "Create charts and a simple dashboard that communicate useful insights from a dataset.", difficulty: "Beginner → Intermediate" },
+        { number: 4, title: "Introduction to SQL", day: 11, description: "Practice basic SQL queries and use them to answer real-world questions about data.", difficulty: "Beginner → Intermediate" },
+        { number: 5, title: "SQL Joins & Aggregations", day: 15, description: "Use JOIN, GROUP BY and aggregate functions such as COUNT, SUM and AVG to analyze information across multiple tables.", difficulty: "Intermediate" },
+        { number: 6, title: "Lookup Functions & Data Wrangling", day: 19, description: "Use VLOOKUP or XLOOKUP to combine related datasets and handle data mismatches.", difficulty: "Intermediate" },
+        { number: 7, title: "Mini Analysis Project", day: 22, description: "Complete a small end-to-end analysis involving data cleaning, formulas, Pivot Tables, charts and recommendations.", difficulty: "Intermediate" },
+        { number: 8, title: "Capstone Project", day: 26, description: "Complete a larger project combining spreadsheet analysis and SQL using at least two related tables.", difficulty: "Intermediate" }
+      ]
+    }
+  };
+
+  // ---- State: which track is currently selected ----
+  let currentTrack = "web";
+
+  // ---- DOM references ----
+  const timelineEl = document.getElementById("timeline");
+  const viewingBadge = document.getElementById("viewing-badge");
+  const trackSummary = document.getElementById("track-summary");
+  const btnWeb = document.getElementById("btn-web");
+  const btnData = document.getElementById("btn-data");
+
+  // ---- Function: render the 8 task cards for a given track key ----
+  function renderTrack(trackKey) {
+    currentTrack = trackKey;
+    const track = tracks[trackKey];
+
+    // Swap the accent color used throughout the page (pills, dots, badge)
+    document.documentElement.style.setProperty("--accent", `var(${track.accentVar})`);
+    document.documentElement.style.setProperty("--accent-soft", `var(${track.accentSoftVar})`);
+
+    // Update "Currently viewing" indicator
+    viewingBadge.textContent = track.label;
+    trackSummary.textContent = "Day 1 → Day 26 · Beginner to Intermediate";
+
+    // Update active button styling
+    btnWeb.classList.toggle("active", trackKey === "web");
+    btnData.classList.toggle("active", trackKey === "data");
+    btnWeb.setAttribute("aria-selected", trackKey === "web");
+    btnData.setAttribute("aria-selected", trackKey === "data");
+
+    // Clear and rebuild the timeline
+    timelineEl.innerHTML = "";
+    track.tasks.forEach(task => {
+      const card = document.createElement("div");
+      card.className = "task-card";
+      card.innerHTML = `
+        <div class="task-meta">
+          <span class="day-pill">Day ${task.day}</span>
+          <span class="task-number">Task ${task.number} of 8</span>
+        </div>
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <span class="difficulty">${task.difficulty}</span>
+      `;
+      timelineEl.appendChild(card);
+    });
+  }
+
+  // ---- Event listeners: detect track selection ----
+  btnWeb.addEventListener("click", () => {
+    if (currentTrack !== "web") renderTrack("web");
+  });
+  btnData.addEventListener("click", () => {
+    if (currentTrack !== "data") renderTrack("data");
+  });
+
+  // ---- Initial render ----
+  renderTrack("web");
+</script>
+
+</body>
+</html>
