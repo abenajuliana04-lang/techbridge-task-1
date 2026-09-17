@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge Hub — TechBridge</title>
+<meta name="description" content="Browse practical Data Analytics and Web Development challenges built for TechBridge interns, filter by track and difficulty, and see what each one involves.">
+<link rel="icon" href="images/techbridge-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html#top" class="brand">
+      <img src="./images/techbridge-logo.png" alt="TechBridge logo" class="brand-mark">
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="nav-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#about">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="internship.html">Internship</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="challenges.html" class="current-page" aria-current="page">Challenge Hub</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://forms.gle/8EbdSy5ttGfLZfjv5?utm_source=chatgpt.com" class="nav-cta" target="_blank" rel="noopener">Apply now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero hub-hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Data Analytics &amp; Web Development</p>
+        <h1>What will I actually be working on?</h1>
+        <p class="hero-lede">The Challenge Hub is where you explore real TechBridge challenges before you dive in — see what each one involves, how hard it is, and what you'll walk away with, across both tracks.</p>
+        <div class="hub-stats">
+          <div><strong id="statTotal">8</strong><span>Challenges</span></div>
+          <div><strong>2</strong><span>Tracks</span></div>
+          <div><strong>3</strong><span>Difficulty levels</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 460 460" class="circuit-svg">
+          <path class="trace" d="M60 100 H180 A20 20 0 0 1 200 120 V220" />
+          <path class="trace" d="M400 360 H280 A20 20 0 0 0 260 340 V240" />
+          <path class="trace trace-b trace-data" d="M60 340 H160 A20 20 0 0 0 180 320 V240 A20 20 0 0 1 200 220 H230" style="stroke-opacity:0.55;" />
+          <path class="trace trace-b trace-web" d="M230 220 H260 A20 20 0 0 1 280 240 V320 A20 20 0 0 0 300 340 H400" style="stroke-opacity:0.55; animation-delay:0.5s;" />
+          <circle class="node" cx="60" cy="100" r="7" />
+          <circle class="node" cx="400" cy="360" r="7" />
+          <circle class="node node-data" cx="60" cy="340" r="8" />
+          <circle class="node node-web" cx="400" cy="240" r="8" />
+          <circle class="node node-accent" cx="230" cy="230" r="11" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="wrap filter-row">
+      <div class="hub-tools">
+        <div class="filter-group" id="trackFilters" role="group" aria-label="Filter by track">
+          <button class="filter-btn" data-track="all" aria-pressed="true">All</button>
+          <button class="filter-btn fb-data" data-track="data" aria-pressed="false">Data Analytics</button>
+          <button class="filter-btn fb-web" data-track="web" aria-pressed="false">Web Development</button>
+        </div>
+        <div class="filter-group" id="diffFilters" role="group" aria-label="Filter by difficulty">
+          <button class="filter-btn" data-diff="all" aria-pressed="true">All levels</button>
+          <button class="filter-btn" data-diff="beginner" aria-pressed="false">Beginner</button>
+          <button class="filter-btn" data-diff="intermediate" aria-pressed="false">Intermediate</button>
+          <button class="filter-btn" data-diff="advanced" aria-pressed="false">Advanced</button>
+        </div>
+      </div>
+      <div class="hub-tools">
+        <div class="hub-search">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/><line x1="10.2" y1="10.2" x2="14" y2="14" stroke="currentColor" stroke-width="1.4"/></svg>
+          <input type="text" id="searchInput" placeholder="Search challenges…" aria-label="Search challenges">
+        </div>
+        <button class="hub-reset" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <section class="section" id="hub">
+    <div class="wrap">
+      <p class="hub-results-meta" id="resultsMeta">Showing 8 of 8 challenges</p>
+      <div class="hub-grid" id="cardGrid"></div>
+      <div class="hub-empty" id="emptyState">
+        <h3>No challenges match those filters</h3>
+        <p>Try a different track, difficulty, or search term.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- DETAIL PANEL -->
+<div class="hub-overlay" id="overlay"></div>
+<aside class="hub-panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+  <div class="hub-panel-inner">
+    <div class="hub-panel-head">
+      <span class="track-badge" id="panelBadge"></span>
+      <button class="hub-panel-close" id="panelClose" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+    <h2 id="panelTitle"></h2>
+    <div class="hub-panel-meta">
+      <span class="diff-chip" id="panelDifficulty"></span>
+    </div>
+
+    <div class="hub-panel-block">
+      <h4>Objective</h4>
+      <p id="panelObjective"></p>
+    </div>
+    <div class="hub-panel-block">
+      <h4>Skills you'll use</h4>
+      <p id="panelSkills"></p>
+    </div>
+    <div class="hub-panel-block">
+      <h4>Tools</h4>
+      <p id="panelTools"></p>
+    </div>
+    <div class="hub-panel-block">
+      <h4>What you'll produce</h4>
+      <p id="panelProduce"></p>
+    </div>
+    <div class="hub-panel-block">
+      <h4>Expected result</h4>
+      <p id="panelResult"></p>
+    </div>
+
+    <div class="hub-panel-stats">
+      <div><span>Estimated time</span><strong id="panelTime"></strong></div>
+      <div><span>Track</span><strong id="panelTrackLabel"></strong></div>
+    </div>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="./images/techbridge-logo.png" alt="TechBridge logo" class="footer-mark">
+      <p>Bridging Learning to Real-World Experience</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html#about">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="internship.html">Internship</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="challenges.html">Challenge Hub</a>
+    </nav>
+
+    <div class="footer-contact">
+      <p>Baselink Services Limited</p>
+      <a href="mailto:techbridgebaslink@gmail.com">techbridgebaslink@gmail.com</a>
+      <a href="https://chat.whatsapp.com/FqpBvYS4oaK32cXDxc8JIS?utm_source=chatgpt.com" target="_blank" rel="noopener">WhatsApp community</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 TechBridge by Baselink Services Limited. All rights reserved.</p>
+</footer>
+
+<script src="challenges.js"></script>
+</body>
+</html>
