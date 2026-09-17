@@ -56,15 +56,41 @@
 
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 460 460" class="circuit-svg">
-          <path class="trace" d="M60 100 H180 A20 20 0 0 1 200 120 V220" />
-          <path class="trace" d="M400 360 H280 A20 20 0 0 0 260 340 V240" />
-          <path class="trace trace-b trace-data" d="M60 340 H160 A20 20 0 0 0 180 320 V240 A20 20 0 0 1 200 220 H230" style="stroke-opacity:0.55;" />
-          <path class="trace trace-b trace-web" d="M230 220 H260 A20 20 0 0 1 280 240 V320 A20 20 0 0 0 300 340 H400" style="stroke-opacity:0.55; animation-delay:0.5s;" />
-          <circle class="node" cx="60" cy="100" r="7" />
-          <circle class="node" cx="400" cy="360" r="7" />
-          <circle class="node node-data" cx="60" cy="340" r="8" />
-          <circle class="node node-web" cx="400" cy="240" r="8" />
-          <circle class="node node-accent" cx="230" cy="230" r="11" />
+          <!-- Web Development trail: 4 challenges, beginner to advanced -->
+          <path class="trace trace-b trace-web" d="M40 95 C 130 75, 200 118, 250 148 S 330 195, 378 224" />
+          <circle class="node node-web" cx="40" cy="95" r="5" />
+          <circle class="node node-web" cx="140" cy="82" r="5" />
+          <circle class="node node-web" cx="230" cy="132" r="7" />
+          <circle class="node node-web" cx="330" cy="196" r="9" />
+
+          <!-- Data Analytics trail: 4 challenges, beginner to advanced -->
+          <path class="trace trace-b trace-data" d="M40 355 C 130 375, 200 322, 250 292 S 330 245, 378 226" style="animation-delay:0.35s;" />
+          <circle class="node node-data" cx="40" cy="355" r="5" />
+          <circle class="node node-data" cx="140" cy="368" r="5" />
+          <circle class="node node-data" cx="230" cy="308" r="7" />
+          <circle class="node node-data" cx="330" cy="252" r="9" />
+
+          <!-- Convergence: every challenge leads back to TechBridge -->
+          <circle class="node node-accent" cx="384" cy="225" r="12" />
+          <g class="quest-flag">
+            <path d="M384 213 V172" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M384 176 L410 184 L384 194 Z" fill="currentColor" />
+          </g>
+
+          <!-- Track glyphs -->
+          <g stroke="var(--green)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(38,28)">
+            <path d="M8 8 L0 16 L8 24" />
+            <path d="M24 8 L32 16 L24 24" />
+            <path d="M19 2 L13 30" />
+          </g>
+          <text x="72" y="45" class="quest-label web">Web Development</text>
+
+          <g stroke="var(--data)" stroke-width="2.6" fill="none" stroke-linecap="round" transform="translate(40,405)">
+            <path d="M4 22 V12" />
+            <path d="M16 22 V0" />
+            <path d="M28 22 V16" />
+          </g>
+          <text x="72" y="422" class="quest-label data">Data Analytics</text>
         </svg>
       </div>
     </div>
